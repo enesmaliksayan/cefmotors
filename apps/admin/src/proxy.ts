@@ -2,10 +2,11 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { verifyToken, getTokenFromCookies } from '@/lib/auth'
 
+const publicPaths = ['/login', '/api/auth/login', '/api/auth/verify']
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  const publicPaths = ['/login', '/api/auth/login', '/api/auth/verify']
   if (publicPaths.some(p => pathname.startsWith(p))) {
     return NextResponse.next()
   }
@@ -19,5 +20,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|uploads).*)'],
 }

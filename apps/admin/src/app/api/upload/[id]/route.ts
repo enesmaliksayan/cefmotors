@@ -1,6 +1,5 @@
 import { prisma } from '@cef/database'
-import { unlink } from 'fs/promises'
-import path from 'path'
+import { del } from '@vercel/blob'
 import { NextRequest } from 'next/server'
 
 export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -8,8 +7,7 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
   const image = await prisma.carImage.findUnique({ where: { id: Number(id) } })
   if (!image) return Response.json({ error: 'Görsel bulunamadı' }, { status: 404 })
 
-  const filepath = path.join(process.cwd(), 'public', image.url)
-  try { await unlink(filepath) } catch {}
+  try { await del(image.url) } catch {}
 
   await prisma.carImage.delete({ where: { id: Number(id) } })
   return Response.json({ success: true })

@@ -4,3 +4,4 @@ dev.db
 .env
 public/uploads/*
 !public/uploads/.gitkeep
+cookies.txt

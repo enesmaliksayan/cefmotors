@@ -1,6 +1,5 @@
 import { prisma } from '@cef/database'
-import { writeFile, mkdir } from 'fs/promises'
-import path from 'path'
+import { put } from '@vercel/blob'
 
 export async function POST(request: Request) {
   try {
@@ -12,22 +11,17 @@ export async function POST(request: Request) {
       return Response.json({ error: 'Dosya ve araç ID gerekli' }, { status: 400 })
     }
 
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
-    await mkdir(uploadsDir, { recursive: true })
-
     const ext = file.name.split('.').pop()
     const filename = `${carId}-${Date.now()}.${ext}`
-    const filepath = path.join(uploadsDir, filename)
 
-    const bytes = await file.arrayBuffer()
-    await writeFile(filepath, Buffer.from(bytes))
+    const blob = await put(filename, file, { access: 'public' })
 
     const imageCount = await prisma.carImage.count({ where: { carId: Number(carId) } })
 
     const image = await prisma.carImage.create({
       data: {
         carId: Number(carId),
-        url: `/uploads/${filename}`,
+        url: blob.url,
         isPrimary: imageCount === 0,
         order: imageCount,
       },

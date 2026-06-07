@@ -8,22 +8,23 @@
     "start": "next start -p 3001"
   },
   "dependencies": {
+    "@cef/database": "*",
+    "@vercel/blob": "^2.4.0",
+    "bcryptjs": "*",
+    "framer-motion": "*",
+    "jsonwebtoken": "*",
+    "lucide-react": "*",
     "next": "16.2.7",
     "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "@cef/database": "*",
-    "framer-motion": "*",
-    "lucide-react": "*",
-    "bcryptjs": "*",
-    "jsonwebtoken": "*"
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "*",
+    "@types/jsonwebtoken": "*",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/bcryptjs": "*",
-    "@types/jsonwebtoken": "*",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
