@@ -1,0 +1,32 @@
+{
+  "name": "cef-motors",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w apps/web",
+    "dev:admin": "npm run dev -w apps/admin",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:admin\"",
+    "build": "npm run build -w packages/database && npm run build -w apps/web && npm run build -w apps/admin",
+    "db:generate": "npm run db:generate -w packages/database",
+    "db:push": "npm run db:push -w packages/database",
+    "db:seed": "npm run db:seed -w packages/database"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@types/leaflet": "^1.9.21",
+    "bcryptjs": "^3.0.3",
+    "framer-motion": "^12.40.0",
+    "jsonwebtoken": "^9.0.3",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.17.0",
+    "react-leaflet": "^5.0.0"
+  }
+}

@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0A0A0A;
+  --color-surface: #1A1A1A;
+  --color-surface-2: #242424;
+  --color-accent: #E63946;
+  --color-accent-hover: #D62828;
+  --color-gold: #C5A55A;
+  --color-gold-hover: #B8943E;
+  --color-text: #F5F0EB;
+  --color-text-muted: #9CA3AF;
+  --color-border: #2A2A2A;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-card-bg: #1A1A1A;
+}
+
+:root {
+  --bg: #0A0A0A;
+  --surface: #1A1A1A;
+  --surface-2: #242424;
+  --accent: #E63946;
+  --accent-hover: #D62828;
+  --gold: #C5A55A;
+  --gold-hover: #B8943E;
+  --text: #F5F0EB;
+  --text-muted: #9CA3AF;
+  --border: #2A2A2A;
+}
+
+.light {
+  --bg: #F8F6F3;
+  --surface: #FFFFFF;
+  --surface-2: #F3F1EE;
+  --accent: #E63946;
+  --accent-hover: #D62828;
+  --gold: #B8943E;
+  --gold-hover: #A07830;
+  --text: #1A1A1A;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
